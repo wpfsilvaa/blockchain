@@ -18,6 +18,7 @@ public:
     Transacao(const std::string& rem, const std::string& dest, double val);
     std::string getHash() const;
     std::string toString() const;
+    bool isValid() const;
 };
 
 #endif

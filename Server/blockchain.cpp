@@ -12,6 +12,9 @@ Bloco Blockchain::criarBlocoGenesis() {
 }
 
 void Blockchain::adicionarTransacao(const Transacao& transacao) {
+    if (!transacao.isValid()) {
+        throw std::invalid_argument("Transação inválida!");
+    }
     transacoesPendentes.push_back(transacao);
 }
 
@@ -23,12 +26,12 @@ void Blockchain::minerarTransacoesPendentes() {
 }
 
 bool Blockchain::isValid() const {
-    for(size_t i = 1; i < cadeia.size(); i++) {
+    for (size_t i = 1; i < cadeia.size(); i++) {
         const Bloco& blocoAtual = cadeia[i];
-        const Bloco& blocoAnterior = cadeia[i-1];
+        const Bloco& blocoAnterior = cadeia[i - 1];
 
-        if(blocoAtual.getHash() != blocoAtual.calcularHash()) return false;
-        if(blocoAtual.getHashAnterior() != blocoAnterior.getHash()) return false;
+        if (blocoAtual.getHash() != blocoAtual.calcularHash()) return false;
+        if (blocoAtual.getHashAnterior() != blocoAnterior.getHash()) return false;
     }
     return true;
 }
@@ -40,13 +43,7 @@ Bloco Blockchain::getUltimoBloco() const {
 std::string Blockchain::toJson() const {
     boost::json::array blockchainJson;
     for (const auto& bloco : cadeia) {
-        boost::json::object blocoJson;
-        blocoJson["index"] = bloco.getIndex();
-        blocoJson["nonce"] = bloco.getNonce();
-        blocoJson["hash"] = bloco.getHash();
-        blocoJson["hashAnterior"] = bloco.getHashAnterior();
-        blocoJson["transacoes[]"] = bloco.transactionsToString();
-        blockchainJson.push_back(blocoJson);
+        blockchainJson.push_back(bloco.toJson());
     }
     return boost::json::serialize(blockchainJson);
 }

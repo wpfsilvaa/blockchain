@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <boost/json.hpp>
 #include "transacao.hpp"
 
 class Bloco {
@@ -21,9 +22,11 @@ public:
     std::string getHash() const;
     std::string getHashAnterior() const;
     int getIndex() const;
-    std::vector<Transacao> getTransacoes();
+    std::vector<Transacao> getTransacoes() const;
     std::string transactionsToString() const;
     int getNonce() const;
+    bool validarBloco(int dificuldade) const;
+    boost::json::object toJson() const;
 };
 
 #endif

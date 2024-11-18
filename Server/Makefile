@@ -1,4 +1,4 @@
-TARGET = "blockchain"
+TARGET = "server"
 
 INCLUDES = -Iheaders
 SRCS = blockchain.cpp bloco.cpp controller.cpp transacao.cpp main.cpp 
