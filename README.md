@@ -64,7 +64,9 @@ O projeto está dividido em arquivos `.hpp` e `.cpp`, separados por responsabili
 #### Compilação
 
 Use o comando abaixo para compilar o projeto:
+
 Peer
+
 ```bash
 g++ -Wall -Wextra -std=c++17 -Iheaders -o "peer" peer.cpp main.cpp -lssl -lcrypto -lboost_system -lboost_json
 ```
