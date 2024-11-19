@@ -144,7 +144,3 @@ Ou simplesmente make, pois já existem os Makefiles correspondentes.
 Contribuições para este projeto são bem-vindas! Abra um issue ou envie um pull request no repositório.
 
 ---
-
-### Licença
-
-Este projeto está licenciado sob a **MIT License**. Sinta-se à vontade para utilizá-lo e modificá-lo conforme necessário.
